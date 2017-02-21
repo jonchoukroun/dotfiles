@@ -145,7 +145,7 @@ alias gl='git log'
 # ---------------------------------------------
 
 # System shortcuts
-hash -d zsh="${HOME}/.shell_config/zsh"
+hash -d shell="${HOME}/.shell_config"
 
 # Twenty20 shortcuts
 hash -d t20="${HOME}/Documents/twenty20"

@@ -146,10 +146,13 @@ alias gl='git log'
 
 # System shortcuts
 hash -d shell="${HOME}/.shell_config"
+hash -d subt="${HOME}/Library/Application Support/Sublime Text 3/Packages/User"
 
 # Twenty20 shortcuts
 hash -d t20="${HOME}/Documents/twenty20"
 hash -d api="${HOME}/Documents/twenty20/instacanvas-api"
+hash -d int="${HOME}/Documents/twenty20/instacanvas-api/app/interactors"
+hash -d spec="${HOME}/Documents/twenty20/instacanvas-api/spec/interactors"
 hash -d digital="${HOME}/Documents/twenty20/twenty20-digital"
 hash -d admin="${HOME}/Documents/twenty20/twenty20-admin"
-hash -d content-ops="${HOME}/Documents/twenty20/twenty20-content-ops"
+hash -d ops="${HOME}/Documents/twenty20/twenty20-content-ops"

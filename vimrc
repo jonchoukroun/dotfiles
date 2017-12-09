@@ -131,6 +131,9 @@ set backspace=indent,eol,start
 " Show linenumbers
 set number
 
+" New vertical pane splits right
+set splitright
+
 " Set Proper Tabs
 set tabstop=2
 set shiftwidth=2

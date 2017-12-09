@@ -4,7 +4,7 @@
 # ZSH Config
 # ----------
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/jon/.oh-my-zsh
+export ZSH=${HOME}/.oh-my-zsh
 
 # -----------------
 # Theme & UI Config
@@ -85,7 +85,7 @@ alias gch='git checkout'
 alias gl='git log'
 
 # ---------------------------------------------
-# Path Hashes
+# Path Shortcuts
 # ---------------------------------------------
 
 # System shortcuts
@@ -98,17 +98,14 @@ hash -d api="${HOME}/Documents/twenty20/instacanvas-api"
 hash -d digital="${HOME}/Documents/twenty20/twenty20-digital"
 hash -d admin="${HOME}/Documents/twenty20/twenty20-admin"
 hash -d ops="${HOME}/Documents/twenty20/twenty20-content-ops"
-hash -d map="${HOME}/Documents/twenty20/twenty20-sitemaps"
 
-# Hackday shortcuts
-hash -d eng="${HOME}/Documents/Hackdays/engage-camp"
-hash -d inst="${HOME}/Documents/Hackdays/instagram-grader"
+# Future Butcher
+hash -d fb="${HOME}/Documents/Future Butcher"
+hash -d api="${HOME}/Documents/Slinger/slinger-api"
+hash -d ui="${HOME}/Documents/Slinger/slinger-ui"
 
-# Misc shortcuts
-hash -d clang="${HOME}/Documents/c-lang"
-hash -d slinger="${HOME}/Documents/slinger"
-hash -d so="${HOME}/Documents/SO-questions"
-
+# The Space Crab
+hash -d crab="${HOME}/Documents/Space Crab"
 
 . $HOME/.asdf/asdf.sh
 

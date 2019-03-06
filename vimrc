@@ -183,6 +183,9 @@ let g:hybrid_reduced_contrast = 1
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std") | NERDTree | endif
 
+" NerdCommernter Configuration
+let g:NERDSpaceDelims = 1
+
 " Syntastic Configuration
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}

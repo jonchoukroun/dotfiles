@@ -52,6 +52,11 @@ ssh-es-indexer-1() {
   ssh -i ~/.ec2/twenty20-dev-keypair.pem ubuntu@54.211.71.136
 }
 
+autoload -U compinit
+compinit
+
+bindkey -v
+
 # --------------
 # Custom Aliases
 # --------------

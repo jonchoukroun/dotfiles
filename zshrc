@@ -60,6 +60,7 @@ function f() { find . -iname "*$1*" ${@:2} }
 function f() { grep "$1" ${@:2} -R . }
 
 alias vim='/usr/local/bin/vim'
+alias emacs='/usr/local/Cellar/emacs/25.3/Emacs.app/Contents/MacOS/Emacs -nw'
 alias be='bundle exec'
 alias l='ls -laFh'
 alias post='postgres -D /usr/local/var/postgres'
@@ -77,11 +78,10 @@ alias devapi='RACK_ENV=development bundle exec puma --port=5000'
 alias gs='git status'
 alias gd='git diff'
 alias ga='git add'
-alias gc='git commit -m'
+alias gc='git commit'
 alias gp='git push'
-alias gpom='git push origin master'
 alias gb='git branch'
-alias gch='git checkout'
+alias gco='git checkout'
 alias gl='git log'
 
 # ---------------------------------------------
@@ -94,20 +94,9 @@ hash -d subt="${HOME}/Library/Application Support/Sublime Text 3/Packages/User"
 
 # Twenty20 shortcuts
 hash -d t20="${HOME}/Documents/twenty20"
-hash -d api="${HOME}/Documents/twenty20/instacanvas-api"
-hash -d digital="${HOME}/Documents/twenty20/twenty20-digital"
-hash -d admin="${HOME}/Documents/twenty20/twenty20-admin"
-hash -d ops="${HOME}/Documents/twenty20/twenty20-content-ops"
+hash -d re="${HOME}/Documents/reshot"
 
-# Future Butcher
-hash -d fb="${HOME}/Documents/Future Butcher"
-hash -d api="${HOME}/Documents/Slinger/slinger-api"
-hash -d ui="${HOME}/Documents/Slinger/slinger-ui"
-
-# The Space Crab
-hash -d crab="${HOME}/Documents/Space Crab"
-
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 . $HOME/.asdf/asdf.sh
 
 . $HOME/.asdf/completions/asdf.bash
-#export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"

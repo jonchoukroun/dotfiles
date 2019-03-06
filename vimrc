@@ -137,6 +137,9 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
 augroup END
 
+" New vertical pane splits right
+set splitright
+
 " Set Proper Tabs
 set tabstop=2
 set shiftwidth=2

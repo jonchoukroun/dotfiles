@@ -4,7 +4,7 @@
 # ZSH Config
 # ----------
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/jon/.oh-my-zsh
+export ZSH=${HOME}/.oh-my-zsh
 
 # -----------------
 # Theme & UI Config
@@ -85,7 +85,7 @@ alias gco='git checkout'
 alias gl='git log'
 
 # ---------------------------------------------
-# Path Hashes
+# Path Shortcuts
 # ---------------------------------------------
 
 # System shortcuts
@@ -97,8 +97,6 @@ hash -d t20="${HOME}/Documents/twenty20"
 hash -d re="${HOME}/Documents/reshot"
 
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-
 . $HOME/.asdf/asdf.sh
 
 . $HOME/.asdf/completions/asdf.bash
-

@@ -56,6 +56,7 @@ autoload -U compinit
 compinit
 
 bindkey -v
+bindkey '^R' history-incremental-search-backward
 
 # --------------
 # Custom Aliases
@@ -73,8 +74,6 @@ alias post='postgres -D /usr/local/var/postgres'
 # Allows for batch rename
 autoload -U zmv
 alias zmv='noglob zmv -w'
-
-alias devapi='RACK_ENV=development bundle exec puma --port=5000'
 
 # ---------------------------------------------
 # Git Aliases

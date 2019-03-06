@@ -128,8 +128,14 @@ set nowrap
 " OSX stupid backspace fix
 set backspace=indent,eol,start
 
-" Show linenumbers
-set number
+" Show hybrid linenumbers
+set number relativenumber
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+augroup END
 
 " Set Proper Tabs
 set tabstop=2

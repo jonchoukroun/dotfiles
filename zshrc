@@ -97,9 +97,13 @@ alias gl='git log'
 hash -d shell="${HOME}/.shell_config"
 hash -d subt="${HOME}/Library/Application Support/Sublime Text 3/Packages/User"
 
-# Twenty20 shortcuts
+# Work shortcuts
 hash -d t20="${HOME}/Documents/twenty20"
 hash -d re="${HOME}/Documents/reshot"
+
+# Personal shortcuts
+hash -d fb="${HOME}/Developer/Future_Butcher"
+hash -d ws="${HOME}/Developer/William_Storck"
 
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 . $HOME/.asdf/asdf.sh

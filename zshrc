@@ -65,7 +65,7 @@ bindkey '^R' history-incremental-search-backward
 function f() { find . -iname "*$1*" ${@:2} }
 function f() { grep "$1" ${@:2} -R . }
 
-alias vim='/usr/local/bin/vim'
+alias vim='/usr/bin/vi'
 alias emacs='/usr/local/Cellar/emacs/25.3/Emacs.app/Contents/MacOS/Emacs -nw'
 alias be='bundle exec'
 alias l='ls -laFh'
@@ -108,3 +108,4 @@ export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 . $HOME/.asdf/asdf.sh
 
 . $HOME/.asdf/completions/asdf.bash
+source /home/deploy/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

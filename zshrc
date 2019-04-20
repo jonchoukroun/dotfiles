@@ -55,9 +55,6 @@ ssh-es-indexer-1() {
 autoload -U compinit
 compinit
 
-bindkey -v
-bindkey '^R' history-incremental-search-backward
-
 # --------------
 # Custom Aliases
 # --------------

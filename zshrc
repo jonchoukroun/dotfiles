@@ -9,7 +9,7 @@ export ZSH=${HOME}/.oh-my-zsh
 # -----------------
 # Theme & UI Config
 # -----------------
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="spaceship"
 POWERLEVEL9K_COLOR_SCHEME='dark'
 POWERLEVEL9K_NODE_VERSION_BACKGROUND='28'
 POWERLEVEL9K_NODE_VERSION_FOREGROUND='15'
@@ -42,8 +42,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(git autopep8 ruby common-aliases zsh-syntax-highlighting)
 
-source $ZSH/oh-my-zsh.sh
-
 # --------------
 # SSH Config
 # --------------
@@ -54,9 +52,6 @@ ssh-es-indexer-1() {
 
 autoload -U compinit
 compinit
-
-bindkey -v
-bindkey '^R' history-incremental-search-backward
 
 # --------------
 # Custom Aliases
@@ -69,7 +64,6 @@ alias vim='/usr/bin/vi'
 alias emacs='/usr/local/Cellar/emacs/25.3/Emacs.app/Contents/MacOS/Emacs -nw'
 alias be='bundle exec'
 alias l='ls -laFh'
-alias post='postgres -D /usr/local/var/postgres'
 
 # Allows for batch rename
 autoload -U zmv
@@ -92,13 +86,9 @@ alias gl='git log'
 # Path Shortcuts
 # ---------------------------------------------
 
-# System shortcuts
-hash -d shell="${HOME}/.shell_config"
-hash -d subt="${HOME}/Library/Application Support/Sublime Text 3/Packages/User"
-
 # Work shortcuts
-hash -d t20="${HOME}/Documents/twenty20"
-hash -d re="${HOME}/Documents/reshot"
+hash -d t20="${HOME}/Developer/twenty20"
+hash -d re="${HOME}/Developer/reshot"
 
 # Personal shortcuts
 hash -d fb="${HOME}/Developer/Future_Butcher"
@@ -106,6 +96,6 @@ hash -d ws="${HOME}/Developer/William_Storck"
 
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 . $HOME/.asdf/asdf.sh
-
 . $HOME/.asdf/completions/asdf.bash
-source /home/deploy/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+source $ZSH/oh-my-zsh.sh

@@ -39,7 +39,7 @@ function f() { grep "$1" ${@:2} -R . }
 
 alias vim='/usr/bin/vi'
 alias be='bundle exec'
-alias ls='ls -laFh'
+alias l='ls -laFh'
 
 # Allows for batch rename
 autoload -U zmv

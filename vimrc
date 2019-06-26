@@ -55,6 +55,7 @@ Plugin 'LanguageTool'
 Plugin 'kablamo/vim-git-log'
 Plugin 'gregsexton/gitv'
 Plugin 'tpope/vim-fugitive'
+Plugin 'gisphm/vim-gitignore'
 "Plugin 'jaxbot/github-issues.vim'
 
 " Erlang Support

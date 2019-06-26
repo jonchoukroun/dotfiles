@@ -80,7 +80,8 @@ hash -d fb="${HOME}/Developer/Future_Butcher"
 hash -d ws="${HOME}/Developer/William_Storck"
 
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
-
 source $ZSH/oh-my-zsh.sh
+
+. $HOME/.asdf/asdf.sh
+
+. $HOME/.asdf/completions/asdf.bash

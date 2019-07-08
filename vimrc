@@ -165,7 +165,7 @@ if (has("termguicolors"))
 endif
 
 let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme sierra
+colorscheme lucario
 
 "Configure powerline
 let g:Powerline_symbols = 'fancy'

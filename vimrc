@@ -3,6 +3,8 @@
 " thanks to Allan MacGregor
 "----------------------------------------
 
+set nocompatible
+
 """" START Vundle Configuration 
 
 " Disable file type for vundle
@@ -34,10 +36,17 @@ Plugin 'vim-airline/vim-airline-themes'
 
 " Language Support
 Plugin 'sheerun/vim-polyglot'
+
 Plugin 'leafgarland/typescript-vim'
+
 Plugin 'mustache/vim-mustache-handlebars'
+
 Plugin 'elixir-editors/vim-elixir'
 Plugin 'slashmili/alchemist.vim'
+
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
+Plugin 'vim-scripts/rainbow-end'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -131,6 +140,8 @@ let g:syntastic_typescript_eslint_exec = 'node_modules/.bin/eslint'
 
 let g:syntastic_handlebars_exec = 'node_modules/.bin/handlebars'
 let g:syntastic_filetype_map = { 'html.handlebars': 'handlebars' }
+
+let g:syntastic_scss_checkers = ['sass_lint']
 
 " NERDTree Configuration
 autocmd StdinReadPre * let s:std_in=1

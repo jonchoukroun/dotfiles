@@ -80,6 +80,10 @@ hash -d fb="${HOME}/Developer/Future_Butcher"
 hash -d ws="${HOME}/Developer/William_Storck"
 
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
+source $HOME/Developer/envato/identity-dev-bootstrap/files/shell-env.sh
+source $HOME/Developer/envato/identity-dev-bootstrap/files/service-ports.sh 
+
 source $ZSH/oh-my-zsh.sh
 
 . $HOME/.asdf/asdf.sh

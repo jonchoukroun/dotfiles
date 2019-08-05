@@ -58,7 +58,6 @@ set nowrap
 
 set hidden
 
-filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
 set ttimeoutlen=10
@@ -134,7 +133,8 @@ let g:syntastic_handlebars_exec = 'node_modules/.bin/handlebars'
 let g:syntastic_filetype_map = { 'html.handlebars': 'handlebars' }
 
 " NERDTree Configuration
-autocmd vimenter * NERDTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
 let NERDTreeShowLineNumbers = 1
 let NERDTreeAutoDeleteBuffer = 1

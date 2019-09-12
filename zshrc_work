@@ -21,19 +21,22 @@ COMPLETION_WAITING_DOTS="true"
 
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git autopep8 ruby common-aliases osx zsh-syntax-highlighting)
+plugins=(git autopep8 ruby common-aliases osx zsh-syntax-highlighting zsh-completions)
 
 
 # --------------
 # SSH Config
 # --------------
 
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
 ssh-es-indexer-1() {
   ssh -i ~/.ec2/twenty20-dev-keypair.pem ubuntu@54.211.71.136
 }
 
-autoload -U compinit
-compinit
+autoload -U compinit && compinit
 
 
 # --------------
@@ -72,20 +75,16 @@ alias gl='git log'
 
 # Work shortcuts
 hash -d t20="${HOME}/Developer/twenty20"
-hash -d re="${HOME}/Developer/reshot"
+# hash -d re="${HOME}/Developer/reshot"
 
-# Personal shortcuts
-hash -d fb="${HOME}/Developer/Future_Butcher"
-hash -d ws="${HOME}/Developer/William_Storck"
+# export PATH="$PATH:/usr/local/opt/mysql@5.7/bin"
+# export PATH="$PATH:/usr/local/opt/postgresql@9.6/bin"
 
-export PATH="$PATH:/usr/local/opt/mysql@5.7/bin"
-export PATH="$PATH:/usr/local/opt/postgresql@9.6/bin"
-
-source $HOME/Developer/envato/identity-dev-bootstrap/files/shell-env.sh
-source $HOME/Developer/envato/identity-dev-bootstrap/files/service-ports.sh 
+# source $HOME/Developer/envato/identity-dev-bootstrap/files/shell-env.sh
+# source $HOME/Developer/envato/identity-dev-bootstrap/files/service-ports.sh 
 
 source $ZSH/oh-my-zsh.sh
 
-. $HOME/.asdf/asdf.sh
+export PATH="/usr/local/sbin:$PATH"
 
-. $HOME/.asdf/completions/asdf.bash
+. /usr/local/opt/asdf/asdf.sh

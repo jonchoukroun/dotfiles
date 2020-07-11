@@ -27,6 +27,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'tpope/vim-surround'
 Plugin 'janko/vim-test'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " Vim Theme/Appearance
 Plugin 'joshdick/onedark.vim'
@@ -47,6 +48,8 @@ Plugin 'slashmili/alchemist.vim'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'vim-scripts/rainbow-end'
+
+Plugin 'mattn/emmet-vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -82,6 +85,17 @@ augroup numbertoggle
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
 augroup END
+
+" Use ripgrep in CtrlP
+if executable('rg')
+  let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+endif
+
+set wildignore+=*/.git/*,*/tmp/*,*.swp,*/dist/*
+
+" New horizontal pane splits below
+set splitbelow
 
 " New vertical pane splits right
 set splitright
@@ -126,7 +140,6 @@ let g:airline_theme='onedark'
 let g:NERDSpaceDelims = 1
 
 " Syntastic Configuration
-let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0

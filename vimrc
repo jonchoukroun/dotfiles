@@ -114,7 +114,8 @@ let g:ondedark_terminal_italics = 1
 colorscheme onedark
 hi Comment cterm=italic
 
-set list listchars=space:⋅
+" Whitespace chars
+" set list listchars=space:⋅
 
 " Vim-Airline Configuration
 let g:airline#extensions#tabline#enabled = 1

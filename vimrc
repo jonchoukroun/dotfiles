@@ -1,189 +1,122 @@
-"----------------------------------------
-" Jon Choukroun Vimrc configuration 
-" thanks to Allan MacGregor
-"----------------------------------------
+" -----------------------------------------------------------------------------
+" Manage plugins with vim-plug
+" -----------------------------------------------------------------------------
+call plug#begin('~/.vim/begin')
+" Auto completion
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
-set nocompatible
+" Switch between header and source files
+Plug 'ton/vim-alternate'
 
-"""" START Vundle Configuration 
+" Editing
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdcommenter'
 
-" Disable file type for vundle
-filetype off
+" Project navigation
+Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Display
+Plug 'gruvbox-community/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+call plug#end()
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+" -----------------------------------------------------------------------------
+" Basic functionality
+" -----------------------------------------------------------------------------
 
-" Vim Utilities
-Plugin 'majutsushi/tagbar'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'tpope/vim-surround'
-Plugin 'janko/vim-test'
-Plugin 'ctrlpvim/ctrlp.vim'
+set encoding=utf-8
 
-" Vim Theme/Appearance
-Plugin 'joshdick/onedark.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-" Plugin 'ryanoasis/vim-devicons'
-
-" Language Support
-Plugin 'sheerun/vim-polyglot'
-
-Plugin 'leafgarland/typescript-vim'
-
-Plugin 'mustache/vim-mustache-handlebars'
-
-Plugin 'elixir-editors/vim-elixir'
-Plugin 'slashmili/alchemist.vim'
-
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-rails'
-Plugin 'vim-scripts/rainbow-end'
-
-Plugin 'mattn/emmet-vim'
-
-call vundle#end()            " required
-filetype plugin indent on    " required
-"""" END Vundle Configuration 
-
-
-"----------------------------------------
-" Configuration Section
-"----------------------------------------
-
-set encoding=utf8
-set incsearch
-set smartindent
+" Tabs to spaces
+set tabstop=4
+set expandtab
+set softtabstop=4
+set shiftwidth=4
 set autoindent
-nnoremap <silent><C-L> :noh<CR><C-L>
-set scrolloff=5
-set nowrap
+set smartindent
 
-set hidden
-
-set omnifunc=syntaxcomplete#Complete
-
-set ttimeoutlen=10
-
-" OSX stupid backspace fix
+" Allow backspace key to work from next line, etc
 set backspace=indent,eol,start
 
-" Show hybrid linenumbers
-set number relativenumber
-
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
-augroup END
-
-" Use ripgrep in CtrlP
-if executable('rg')
-  let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
-  let g:ctrlp_use_caching = 0
-endif
-
-set wildignore+=*/.git/*,*/tmp/*,*.swp,*/dist/*
-
-" New horizontal pane splits below
-set splitbelow
-
-" New vertical pane splits right
-set splitright
-
-" Set Proper Tabs
-set tabstop=2
-set shiftwidth=2
-set smarttab
-set expandtab
-
-" Always display the status line
-set laststatus=2
-
-" Enable highlighting of the current line
-set cursorline
-
-" Theme and Styling 
-if (empty($TMUX))
-  if (has("nvim"))
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  if (has("termguicolors"))
-    set termguicolors
-  endif
-end
-
+" Display Preferences
 syntax on
-
-let g:ondedark_terminal_italics = 1
-colorscheme onedark
+set termguicolors
+colo gruvbox
+set number relativenumber
 hi Comment cterm=italic
 
-" Whitespace chars
-" set list listchars=space:⋅
+set nowrap
 
-" Vim-Airline Configuration
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1 
-let g:airline_theme='onedark'
+set splitbelow
+set splitright
 
-" NerdCommenter Configuration
+" ------------------------------------------------------------------------------
+" CoC.nvim - Autocompletion, LSP
+" ------------------------------------------------------------------------------
+
+function! CheckBackspace() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1] =~# '\s'
+endfunction
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" ------------------------------------------------------------------------------
+" Nerd commenter - enable/disable chunks of text
+" ------------------------------------------------------------------------------
 let g:NERDSpaceDelims = 1
 
-" Syntastic Configuration
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" ------------------------------------------------------------------------------
+" Vim-Alternate - switch between header/source files
+" ------------------------------------------------------------------------------
+nmap <silent> <C-a> :Alternate<CR>
 
-let g:syntastic_elixir_checkers = ['elixir']
-let g:syntastic_enable_elixir_checker = 1
+" ------------------------------------------------------------------------------
+" NerdTree - Project navigation
+" ------------------------------------------------------------------------------
+" Open NERDTree every time vim opens
+autocmd VimEnter * NERDTree | wincmd p
+" Close NERDTree when no other window remains
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_typescript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exec = 'node_modules/.bin/eslint'
-let g:syntastic_typescript_eslint_exec = 'node_modules/.bin/eslint'
+" ------------------------------------------------------------------------------
+" vim-airline & vim-airline-theme - status line
+" ------------------------------------------------------------------------------
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme = 'gruvbox'
 
-let g:syntastic_handlebars_exec = 'node_modules/.bin/handlebars'
-let g:syntastic_filetype_map = { 'html.handlebars': 'handlebars' }
-
-let g:syntastic_scss_checkers = ['sass_lint']
-
-" NERDTree Configuration
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-
-let NERDTreeShowLineNumbers = 1
-let NERDTreeAutoDeleteBuffer = 1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-
-
-"----------------------------------------
-" Mappings configurationn
-"----------------------------------------
-
-map <F8> :TagbarToggle<CR>
-map <C-n> :NERDTreeToggle<CR>
-
-nmap <silent> t<C-n> :TestNearest<CR>
-nmap <silent> t<C-f> :TestFile<CR>
-nmap <silent> t<C-s> :TestSuite<CR>
-nmap <silent> t<C-l> :TestLast<CR>
-nmap <silent> t<C-g> :TestVisit<CR>
-
-
-"---------------------------------------
+" ------------------------------------------------------------------------------
 " Cursor config
-"---------------------------------------
+" ------------------------------------------------------------------------------
 
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
